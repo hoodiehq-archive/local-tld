@@ -1,0 +1,84 @@
+#!/usr/bin/env node
+var fs = require("fs");
+var watch = require('watchfd').watch;
+var http_proxy = require("http-proxy");
+var dnsserver = require("dnsserver");
+
+
+// start dns
+// start httpd router
+// restart httpd when config changes.
+
+var config_file = process.env.HOME + "/.local-tld.json";
+var config = JSON.parse(fs.readFileSync(config_file));
+
+var DNS_PORT = 3333;
+var HTTP_PORT = 5999;
+
+
+start_dns();
+var httpd = start_httpd();
+
+watch(config_file, function(current, previous) {
+  if(current.mtime.getTime() <= previous.mtime.getTime()) { // make content-based
+    return;
+  }
+  console.log("reloading proxy");
+  config = JSON.parse(fs.readFileSync(config_file));
+  httpd.close(function() {
+    httpd = start_httpd();
+  });
+});
+
+
+// util
+
+function start_httpd()
+{
+  function make_routes()
+  {
+    var routes = {};
+    routes["localhost"] = "127.0.0.1:80";
+    for(var domain_name in config) {
+      var domain = config[domain_name];
+      routes[domain_name + ".dev"] = "127.0.0.1:" + domain.port;
+    }
+    console.log(routes);
+    return routes;
+  }
+  var routes = make_routes();
+  var server = http_proxy.createServer({
+    router: routes
+  });
+  server.listen(HTTP_PORT);
+  console.log("httpd running");
+  return server;
+}
+
+function start_dns()
+{
+  var server = dnsserver.createServer();
+
+  server.on("request", function(req, res) {
+    var question = req.question;
+
+    if (question.type == 1 && question.class == 1) {
+      // IN A query
+      res.addRR(question.name, 1, 1, 600, "127.0.0.1");
+    } else {
+      res.header.rcode = 3; // NXDOMAIN
+    }
+
+    res.send();
+  });
+
+  server.on("message", function(m) {
+    // log(m);
+  });
+
+  server.on("error", function(e) {
+    console.log(e);
+  });
+  server.bind(DNS_PORT, "127.0.0.1");
+  console.log("DNS is a go");
+}
