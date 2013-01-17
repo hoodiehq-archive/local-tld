@@ -1,0 +1,26 @@
+{
+  "name": "local-tld",
+  "version": "1.0.0",
+  "description": "Maintain a TLD on localhost for all your project.",
+  "main": "bin/local-tld",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "dnsserver": "~0.1.0",
+    "watchfd": "~0.0.9",
+    "http-proxy": "~0.8.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": "",
+  "keywords": [
+    "tld",
+    "pow"
+  ],
+  "author": "Jan Lehnardt <jan@apache.org>",
+  "license": "Apache 2.0",
+  "readmeFilename": "README.md"
+}
