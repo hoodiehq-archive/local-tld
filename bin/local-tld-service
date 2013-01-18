@@ -23,14 +23,22 @@ start_dns();
 var httpd = start_httpd();
 
 watch(config_file, function(current, previous) {
+  if(current.length == 0) {
+    return;
+  }
   if(current.mtime.getTime() <= previous.mtime.getTime()) { // make content-based
     return;
   }
   console.log("reloading proxy");
-  config = JSON.parse(fs.readFileSync(config_file));
-  httpd.close(function() {
-    httpd = start_httpd();
-  });
+  try {
+    config = JSON.parse(fs.readFileSync(config_file));
+    httpd.close(function() {
+      httpd = start_httpd();
+    });
+  } catch (e) {
+    console.log("Parsing of config file %s failed:", config_file);
+    console.log(e);
+  }
 });
 
 
