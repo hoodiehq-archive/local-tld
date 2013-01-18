@@ -3,29 +3,39 @@ var ltld = require("../lib/local-tld");
 var fs = require("fs");
 
 ltld.tld_file = "/tmp/tld-test.json";
+ltld.base_port = 6000;
 
 var tests = {}
-tests.test_add = function () {
-  ltld.add("foo", 12345);
+
+tests.test_getPort = function() {
+  ltld.getPort("foo");
   var expect = {
-    "foo": {
-      "port": 12345
+    "6001": {
+      "name": "foo"
     }
   };
   var result = read_json(ltld.tld_file);
-  assert.deepEqual(expect, result);
+  assert.deepEqual(result, expect);
 }
 
-tests.test_remove = function() {
-  ltld.remove("foo");
-  var expect = {};
+tests.test_getPortAgain = function() {
+  ltld.getPort("foo");
+  ltld.getPort("bar");
+  var expect = {
+    "6001": {
+      "name": "foo"
+    },
+    "6002": {
+      "name": "bar"
+    }
+  };
   var result = read_json(ltld.tld_file);
-  assert.deepEqual(expect, result);
+  assert.deepEqual(result, expect);
 }
 
 try {
-  run_test("test_add");
-  run_test("test_remove");
+  run_test("test_getPort");
+  run_test("test_getPortAgain");
   console.log("All tests OK.")
 } catch(e) {
   cleanup();
