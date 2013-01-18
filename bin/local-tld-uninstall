@@ -6,6 +6,6 @@ sudo launchctl unload /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist
 launchctl unload $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
 
 sudo rm -f /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist
-rm $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
+rm -f $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
 
-sudo rm /etc/resolver/dev
+sudo rm -f /etc/resolver/dev

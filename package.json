@@ -1,26 +1,28 @@
 {
   "name": "local-tld",
   "version": "1.0.0",
-  "description": "Maintain a TLD on localhost for all your project.",
-  "main": "bin/local-tld",
+  "description": "Maintain a TLD on localhost for all your projects.",
+  "preferGlobal": true,
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "dnsserver": "~0.1.0",
+    "dnsserver": "https://github.com/sstephenson/dnsserver.js/archive/library.tar.gz",
     "watchfd": "~0.0.9",
-    "http-proxy": "~0.8.7",
-    "shelljs": "*"
+    "http-proxy": "~0.8.7"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node test/test.js",
+    "postinstall": "./bin/local-tld-setup",
+    "preuninstall": "./bin/local-tld-uninstall"
   },
   "repository": "",
   "keywords": [
     "tld",
     "pow"
   ],
+  "os": ["darwin"],
   "author": "Jan Lehnardt <jan@apache.org>",
   "license": "Apache 2.0",
   "readmeFilename": "README.md"
