@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var fs = require("fs");
-var watch = require('watchfd').watch;
+var watch = require("watchfd").watch;
 var http_proxy = require("http-proxy");
 var dnsserver = require("dnsserver");
 
