@@ -5,6 +5,7 @@
   "directories": {
     "test": "test"
   },
+  "main":"lib/local-tld.js",
   "dependencies": {
     "dnsserver": "https://github.com/sstephenson/dnsserver.js/archive/library.tar.gz",
     "watchfd": "~0.0.9",
