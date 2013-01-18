@@ -53,8 +53,11 @@ function start_httpd()
   var server = http_proxy.createServer({
     router: routes
   });
+
+  server.on("listening", function() {
+    console.log("httpd running");
+  });
   server.listen(HTTP_PORT);
-  console.log("httpd running");
   return server;
 }
 
