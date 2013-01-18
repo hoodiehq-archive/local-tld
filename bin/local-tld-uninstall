@@ -1,0 +1,11 @@
+#!/bin/sh -ex
+
+# uninstalls all traces of local-tld
+
+sudo launchctl unload /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist
+launchctl unload $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
+
+sudo rm -f /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist
+rm $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
+
+sudo rm /etc/resolver/dev

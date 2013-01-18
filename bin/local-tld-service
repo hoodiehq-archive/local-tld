@@ -15,7 +15,6 @@ var config = JSON.parse(fs.readFileSync(config_file));
 var DNS_PORT = 3333;
 var HTTP_PORT = 5999;
 
-
 start_dns();
 var httpd = start_httpd();
 

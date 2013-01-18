@@ -1,0 +1,26 @@
+#!/bin/sh -ex
+
+PWD=`pwd`
+
+# thanks http://stackoverflow.com/questions/630372/determine-the-path-of-the-executing-bash-script
+MY_PATH="`dirname \"$0\"`"
+MY_PATH="`( cd \"$MY_PATH\" && pwd )`"
+ETC=$MY_PATH/../etc
+
+# cp etc/* to targets
+
+sudo mkdir -p /etc/resolver
+sudo cp $ETC/resolver.dev /etc/resolver/dev
+
+sudo cp $ETC/ie.hood.local-tld-firewall.plist /Library/LaunchDaemons/
+
+cp $ETC/ie.hood.local-tld-service.plist $HOME/Library/LaunchAgents/
+
+# launchin
+
+sudo launchctl load -Fw /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist
+
+launchctl unload $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
+launchctl load -Fw $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
+
+echo "Setup done."

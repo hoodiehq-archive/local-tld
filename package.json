@@ -9,7 +9,8 @@
   "dependencies": {
     "dnsserver": "~0.1.0",
     "watchfd": "~0.0.9",
-    "http-proxy": "~0.8.7"
+    "http-proxy": "~0.8.7",
+    "shelljs": "*"
   },
   "devDependencies": {},
   "scripts": {
