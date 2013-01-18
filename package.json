@@ -1,8 +1,7 @@
 {
   "name": "local-tld",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Maintain a TLD on localhost for all your projects.",
-  "preferGlobal": true,
   "directories": {
     "test": "test"
   },
