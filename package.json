@@ -1,6 +1,6 @@
 {
   "name": "local-tld",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Maintain a TLD on localhost for all your projects.",
   "directories": {
     "test": "test"
