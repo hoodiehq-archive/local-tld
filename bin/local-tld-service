@@ -42,9 +42,9 @@ function start_httpd()
   {
     var routes = {};
     // routes["localhost"] = "127.0.0.1:80";
-    for(var domain_name in config) {
-      var domain = config[domain_name];
-      routes[domain_name + ".dev"] = "127.0.0.1:" + domain.port;
+    for(var port_m in config) {
+      var domain = config[port_m].name;
+      routes[domain + ".dev"] = "127.0.0.1:" + port_m;
     }
     console.log(routes);
     return routes;
