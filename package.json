@@ -16,7 +16,7 @@
     "postinstall": "./bin/local-tld-setup",
     "preuninstall": "./bin/local-tld-uninstall"
   },
-  "repository": "",
+  "repository": "https://github.com/hoodiehq/local-tld",
   "keywords": [
     "tld",
     "pow"
