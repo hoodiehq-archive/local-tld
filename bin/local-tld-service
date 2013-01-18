@@ -10,7 +10,11 @@ var dnsserver = require("dnsserver");
 // restart httpd when config changes.
 
 var config_file = process.env.HOME + "/.local-tld.json";
-var config = JSON.parse(fs.readFileSync(config_file));
+try {
+  var config = JSON.parse(fs.readFileSync(config_file));
+} catch(e) {
+  config = {};
+}
 
 var DNS_PORT = 3333;
 var HTTP_PORT = 5999;
@@ -37,7 +41,7 @@ function start_httpd()
   function make_routes()
   {
     var routes = {};
-    routes["localhost"] = "127.0.0.1:80";
+    // routes["localhost"] = "127.0.0.1:80";
     for(var domain_name in config) {
       var domain = config[domain_name];
       routes[domain_name + ".dev"] = "127.0.0.1:" + domain.port;
