@@ -93,6 +93,9 @@ function start_dns()
   server.on("error", function(e) {
     console.log(e);
   });
+
+  server.on("listening", function() {
+    console.log("DNS is a go");
+  });
   server.bind(DNS_PORT, "127.0.0.1");
-  console.log("DNS is a go");
 }
