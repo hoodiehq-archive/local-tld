@@ -7,7 +7,7 @@
         <key>ProgramArguments</key>
         <array>
                 <string>/usr/local/bin/node</string>
-                <string>/usr/local/share/npm/lib/node_modules/local-tld/bin/local-tld-service</string>
+                <string>{{NODE_PATH}}/local-tld/bin/local-tld-service</string>
         </array>
         <key>KeepAlive</key>
         <true/>
