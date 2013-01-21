@@ -1,0 +1,8 @@
+#!/bin/sh -ex
+echo "*** Reloading system network configuration..."
+location=$(networksetup -getcurrentlocation)
+networksetup -createlocation "tld$$"
+networksetup -switchtolocation "tld$$"
+networksetup -switchtolocation "$location"
+networksetup -deletelocation "tld$$"
+echo "DONE"
