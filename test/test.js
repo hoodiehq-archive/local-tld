@@ -33,13 +33,37 @@ tests.test_getPortAgain = function() {
   assert.deepEqual(result, expect);
 }
 
+tests.test_setAlias = function() {
+  var result = ltld.setAlias("foo", "foo1");
+  // assert.equal(result, true, "should return true");
+
+  // var result = ltld.setAlias("wibble", "foo1");
+  // assert.equal(result, false, "should return false");
+
+  var expect = {
+    "6001": {
+      "name": "foo",
+      "aliases": [
+        "foo1"
+      ]
+    },
+    "6002": {
+      "name": "bar"
+    }
+  };
+  var result = read_json(ltld.tld_file);
+  assert.deepEqual(result, expect);
+}
+
 try {
   run_test("test_getPort");
   run_test("test_getPortAgain");
+  run_test("test_setAlias");
   console.log("All tests OK.")
 } catch(e) {
-  cleanup();
   throw e;
+} finally {
+  cleanup();
 }
 
 function cleanup() {

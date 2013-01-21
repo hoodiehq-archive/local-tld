@@ -53,6 +53,12 @@ function start_httpd()
     for(var port_m in config) {
       var domain = config[port_m].name;
       routes[domain + ".dev"] = "127.0.0.1:" + port_m;
+      if(config[port_m].aliases) {
+        var aliases = config[port_m].aliases;
+        aliases.forEach(function(alias) {
+          routes[alias + "." + domain + ".dev"] = "127.0.0.1:" + port_m;
+        });
+      }
     }
     console.log(routes);
     return routes;
