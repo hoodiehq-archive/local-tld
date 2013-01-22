@@ -35,17 +35,18 @@ tests.test_getPortAgain = function() {
 
 tests.test_setAlias = function() {
   var result = ltld.setAlias("foo", "foo1");
-  // assert.equal(result, true, "should return true");
+  assert.equal(result, true, "should return true");
 
-  // var result = ltld.setAlias("wibble", "foo1");
-  // assert.equal(result, false, "should return false");
+  var result = ltld.setAlias("foo", "foo1");
+  var result = ltld.setAlias("wibble", "foo1");
+  assert.equal(result, false, "should return false");
 
   var expect = {
     "6001": {
       "name": "foo",
-      "aliases": [
-        "foo1"
-      ]
+      "aliases": {
+        "foo1": true
+      }
     },
     "6002": {
       "name": "bar"
