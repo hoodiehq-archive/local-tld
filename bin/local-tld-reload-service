@@ -1,0 +1,3 @@
+#!/bin/sh
+launchctl unload $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist || true
+launchctl load -Fw $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
