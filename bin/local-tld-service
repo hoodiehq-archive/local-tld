@@ -26,9 +26,6 @@ watch(config_file, function(current, previous) {
   if(current.length == 0) {
     return;
   }
-  if(current.mtime.getTime() <= previous.mtime.getTime()) { // make content-based
-    return;
-  }
   try {
     config = JSON.parse(fs.readFileSync(config_file));
   } catch (e) {
