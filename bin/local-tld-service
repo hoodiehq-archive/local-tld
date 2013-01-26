@@ -29,16 +29,18 @@ watch(config_file, function(current, previous) {
   if(current.mtime.getTime() <= previous.mtime.getTime()) { // make content-based
     return;
   }
-  console.log("reloading proxy");
   try {
     config = JSON.parse(fs.readFileSync(config_file));
-    httpd.close(function() {
-      httpd = start_httpd();
-    });
   } catch (e) {
     console.log("Parsing of config file %s failed:", config_file);
     console.log(e);
   }
+
+  console.log("reloading proxy");
+  httpd.close();
+  console.log("closed");
+  httpd = start_httpd();
+  console.log("done");
 });
 
 
