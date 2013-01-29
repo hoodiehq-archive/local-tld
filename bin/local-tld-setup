@@ -7,31 +7,9 @@ MY_PATH="`dirname \"$0\"`"
 MY_PATH="`( cd \"$MY_PATH\" && pwd )`"
 ETC=$MY_PATH/../etc
 
-# see if NODE_PATH is set.
-# if not, try to guess a bit
-if [ -z "$NODE_PATH" ]; then
-  TEST_PATH=/usr/local/share/npm/lib/node_modules
-  if [ -d "$TEST_PATH" ]; then
-    NODE_PATH="$TEST_PATH"
-  fi
-
-  TEST_PATH=/usr/local/lib/node_modules
-  if [ -d "$TEST_PATH" ]; then
-    NODE_PATH="$TEST_PATH"
-  fi
-
-  if [ -z "$NODE_PATH"]; then
-    echo "CANT DETERMINE NODE_PATH."
-    echo "PLEASE SET NODE_PATH MANUALLY AND RUN THE INSTALLATION AGAIN"
-  else
-    echo "Guessed NODE_PATH '$NODE_PATH'"
-    echo "Please set it in your shell environment."
-  fi
-fi
-
-
-# set /ect/*.tpl vars
-sed -e s,{{NODE_PATH}},$NODE_PATH, \
+NODE_ROOT=`npm root -g`
+# set /etc/*.tpl vars
+sed -e s,{{NODE_ROOT}},$NODE_ROOT, \
   etc/ie.hood.local-tld-service.plist.tpl \
   > etc/ie.hood.local-tld-service.plist
 
