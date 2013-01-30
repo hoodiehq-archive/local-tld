@@ -40,11 +40,7 @@ Dat it. `/.localtld.json` maps the a subdomain to a TCP port. So if you have a h
 
 ## I want my app to register itself with local-tld!
 
-  var ltld = require("local-tld");
-  ltld.add("yourfancyproject", 12345);
-
-  // ok cool, how can I deregister?
-  ltld.remove("yourfancyproject");
+See https://github.com/hoodiehq/local-tld-service
 
 
 ## Ok cool, how does it work?
