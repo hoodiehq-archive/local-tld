@@ -51,6 +51,7 @@ function start_httpd()
     // routes["localhost"] = "127.0.0.1:80";
     for(var port_m in config) {
       var domain = config[port_m].name;
+      routes["localhost"] = "127.0.0.1:80";
       routes[domain + ".dev"] = "127.0.0.1:" + port_m;
       if(config[port_m].aliases) {
         var aliases = config[port_m].aliases;
