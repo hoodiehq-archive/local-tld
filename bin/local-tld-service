@@ -56,7 +56,7 @@ function start_httpd()
       if(config[port_m].aliases) {
         var aliases = config[port_m].aliases;
         for(var alias in aliases) {
-          routes[alias + "." + domain + ".dev"] = "127.0.0.1:" + port_m;
+          routes[".*" + alias + "." + domain + ".dev"] = "127.0.0.1:" + port_m;
         }
       }
     }
