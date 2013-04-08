@@ -40,7 +40,7 @@ Dat it. `/.localtld.json` maps the a subdomain to a TCP port. So if you have a h
 
 ## I want my app to register itself with local-tld!
 
-See https://github.com/hoodiehq/local-tld-service
+See https://github.com/hoodiehq/local-tld-lib
 
 
 ## Ok cool, how does it work?
