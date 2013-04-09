@@ -27,7 +27,7 @@ cp $ETC/ie.hood.local-tld-service.plist $HOME/Library/LaunchAgents/
 
 sudo launchctl load -Fw /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist
 
-launchctl unload $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
+launchctl unload $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist || true
 launchctl load -Fw $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
 
 echo "Setup done."
