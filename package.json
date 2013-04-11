@@ -4,7 +4,10 @@
   "description": "Maintain a TLD on localhost for all your projects.",
   "main":"lib/local-tld.js",
   "dependencies": {
-    "http-proxy": "~0.8.7"
+    "http-proxy": "~0.8.7",
+    "node-windows": "0.1.x",
+    "chokidar": "0.6.x",
+    "optimist": "0.3.x"
   },
   "devDependencies": {},
   "scripts": {
