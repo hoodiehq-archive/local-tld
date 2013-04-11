@@ -2,10 +2,16 @@
 
 # uninstalls all traces of local-tld
 
-sudo launchctl unload /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist || true
+if [ `id -u` -eq 0 ]; then
+  SUDO=""
+else
+  SUDO=sudo
+fi
+
+$SUDO launchctl unload /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist || true
 launchctl unload $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist || true
 
-sudo rm -f /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist
+$SUDO rm -f /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist
 rm -f $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
 
-sudo rm -f /etc/resolver/dev
+$SUDO rm -f /etc/resolver/dev

@@ -14,18 +14,24 @@ sed -e s,{{NODE_ROOT}},$NODE_ROOT, \
   > $ETC/ie.hood.local-tld-service.plist
 
 
+if [ `id -u` -eq 0 ]; then
+  SUDO=""
+else
+  SUDO=sudo
+fi
+
 # cp etc/* to targets
 
-sudo mkdir -p /etc/resolver
-sudo cp $ETC/resolver.dev /etc/resolver/dev
+$SUDO mkdir -p /etc/resolver
+$SUDO cp $ETC/resolver.dev /etc/resolver/dev
 
-sudo cp $ETC/ie.hood.local-tld-firewall.plist /Library/LaunchDaemons/
+$SUDO cp $ETC/ie.hood.local-tld-firewall.plist /Library/LaunchDaemons/
 
 cp $ETC/ie.hood.local-tld-service.plist $HOME/Library/LaunchAgents/
 
 # launchin
 
-sudo launchctl load -Fw /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist
+$SUDO launchctl load -Fw /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist
 
 launchctl unload $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist || true
 launchctl load -Fw $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
