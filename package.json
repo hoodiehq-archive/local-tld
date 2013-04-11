@@ -2,10 +2,8 @@
   "name": "local-tld",
   "version": "3.0.5",
   "description": "Maintain a TLD on localhost for all your projects.",
-  "main":"bin/local-tld-service",
+  "main":"lib/local-tld.js",
   "dependencies": {
-    "dnsserver": "https://github.com/sstephenson/dnsserver.js/archive/library.tar.gz",
-    "watchfd": "~0.0.9",
     "http-proxy": "~0.8.7"
   },
   "devDependencies": {},
