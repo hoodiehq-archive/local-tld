@@ -10,10 +10,6 @@
     "optimist": "0.3.x"
   },
   "devDependencies": {},
-  "scripts": {
-    "postinstall": "./bin/local-tld-setup",
-    "preuninstall": "./bin/local-tld-uninstall"
-  },
   "repository": "https://github.com:hoodiehq/local-tld",
   "keywords": [
     "tld",
