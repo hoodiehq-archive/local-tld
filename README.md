@@ -21,10 +21,8 @@ Yes, you can do that by messing with `/etc/hosts`, but it ain’t pretty, and yo
 
 ## Setup
 
-    $ brew install local-tld
+    $ npm -g install local-tld
       # or for now git clone $thisrepo
-    $ sudo local-tld setup
-      # once time sudo required
     $ $EDITOR ~/.local-tld.json
     {
       "8000": {
