@@ -6,8 +6,8 @@
         <string>ie.hood.local-tld-service</string>
         <key>ProgramArguments</key>
         <array>
-                <string>/usr/local/bin/node</string>
-                <string>{{NODE_ROOT}}/local-tld/bin/local-tld-service</string>
+                <string>{{ NODE_BIN }}</string>
+                <string>{{ SERVICE_FILE }}</string>
         </array>
         <key>KeepAlive</key>
         <true/>
