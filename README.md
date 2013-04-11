@@ -25,17 +25,17 @@ Yes, you can do that by messing with `/etc/hosts`, but it ain’t pretty, and yo
       # or for now git clone $thisrepo
     $ sudo local-tld setup
       # once time sudo required
-    $ $EDITOR ~/.localtld.json
+    $ $EDITOR ~/.local-tld.json
     {
-      "myfancyprojectA": {
-        "port": 8000
+      "8000": {
+        "name": "myfancyprojectA"
       },
-      "thatotherprojectB": {
-        "port": 8001
+      "8001": {
+        "name": "thatotherprojectB"
       }
     }
 
-Dat it. `/.localtld.json` maps the a subdomain to a TCP port. So if you have a httpd running on `localhost:8000` you can now reach it by going to `http://myfancyprojectA.dev`.
+Dat it. `/.local-tld.json` maps the a subdomain to a TCP port. So if you have a httpd running on `localhost:8000` you can now reach it by going to `http://myfancyprojectA.dev`.
 
 
 ## I want my app to register itself with local-tld!
