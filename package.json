@@ -9,13 +9,16 @@
     "chokidar": "0.6.x",
     "optimist": "0.3.x"
   },
+  "bin": {
+    "local-tld": "./lib/local-tld.js"
+  },
   "devDependencies": {},
   "repository": "https://github.com:hoodiehq/local-tld",
   "keywords": [
     "tld",
     "pow"
   ],
-  "os": ["darwin"],
+  "os": ["darwin","win32"],
   "author": "Jan Lehnardt <jan@apache.org>",
   "license": "Apache 2.0",
   "readmeFilename": "README.md"
