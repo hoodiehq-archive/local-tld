@@ -9,6 +9,11 @@
                 <string>{{ NODE_BIN }}</string>
                 <string>{{ SERVICE_FILE }}</string>
         </array>
+        <key>EnvironmentVariables</key>
+        <dict>
+                <key>LOCAL_TLD_CONF</key>
+                <string>{{ CONFIG_FILE }}</string>
+        </dict>
         <key>KeepAlive</key>
         <true/>
         <key>RunAtLoad</key>
