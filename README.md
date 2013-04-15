@@ -4,7 +4,7 @@ Local TLD maintains a local development top level domain that you can hook vario
 
 If you know `pow`, this `pow` without the Rack part.
 
-Mac OS X only, for the time being. Cross platform support desired, if you can contribute it! :)
+Mac OS X and Windows only, for the time being. Cross platform support desired, if you can contribute it! :)
 
 
 ## Er what?
@@ -21,36 +21,18 @@ Yes, you can do that by messing with `/etc/hosts`, but it ain’t pretty, and yo
 
 ## Setup
 
-    $ brew install local-tld
-      # or for now git clone $thisrepo
-    $ sudo local-tld setup
-      # once time sudo required
-    $ $EDITOR ~/.localtld.json
-    {
-      "myfancyprojectA": {
-        "port": 8000
-      },
-      "thatotherprojectB": {
-        "port": 8001
-      }
-    }
+    $ npm install -g git://github.com/Acconut/local-tld.git#crossplatform
+    
+    $ local-tld add 8000 myfanceprojectA
+    $ local-tld add 8001 myfanceprojectB
+    
+	$ local-tld start
 
-Dat it. `/.localtld.json` maps the a subdomain to a TCP port. So if you have a httpd running on `localhost:8000` you can now reach it by going to `http://myfancyprojectA.dev`.
-
-
-## I want my app to register itself with local-tld!
-
-See https://github.com/hoodiehq/local-tld-lib
-
-
-## Ok cool, how does it work?
-
-This uses a cool dynamic DNS system that is built into Mac OS X. Local TLD runs a minimal DNS lookup server that does the address translation magic.
-
+So if you have a httpd running on `localhost:8000` you can now reach it by going to `http://myfancyprojectA.dev`.
 
 ## No Original Work
 
-This is all ripped out of `pow`, we don’t claim any credit.
+This is all ripped out of `pow`, we don’t claim any credit or done by contributors.
 
 
 ## License

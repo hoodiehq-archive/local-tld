@@ -7,7 +7,8 @@
     "http-proxy": "~0.8.7",
     "node-windows": "git://github.com/mdlawson/node-windows.git",
     "chokidar": "0.6.x",
-    "optimist": "0.3.x"
+    "optimist": "0.3.x",
+	"consoleplusplus": "1.0.x"
   },
   "bin": {
     "local-tld": "./lib/local-tld.js"
