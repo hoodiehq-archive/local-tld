@@ -1,6 +1,6 @@
 {
   "name": "local-tld",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Maintain a TLD on localhost for all your projects.",
   "main":"bin/local-tld-service",
   "dependencies": {

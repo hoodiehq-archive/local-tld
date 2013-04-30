@@ -31,6 +31,7 @@ cp $ETC/ie.hood.local-tld-service.plist $HOME/Library/LaunchAgents/
 
 # launchin
 
+$SUDO launchctl unload /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist || true
 $SUDO launchctl load -Fw /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist
 
 launchctl unload $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist || true
