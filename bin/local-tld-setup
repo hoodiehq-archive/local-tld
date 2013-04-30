@@ -8,11 +8,11 @@ MY_PATH="`( cd \"$MY_PATH\" && pwd )`"
 ETC=$MY_PATH/../etc
 
 NODE_ROOT=`npm root -g`
+NODE_EXECUTABLE=`which node`
 # set /etc/*.tpl vars
-sed -e s,{{NODE_ROOT}},$NODE_ROOT, \
+sed -e "s,{{NODE_ROOT}},$NODE_ROOT,;s,{{NODE_EXECUTABLE}},$NODE_EXECUTABLE," \
   $ETC/ie.hood.local-tld-service.plist.tpl \
   > $ETC/ie.hood.local-tld-service.plist
-
 
 if [ `id -u` -eq 0 ]; then
   SUDO=""
