@@ -11,7 +11,7 @@
     "consoleplusplus": "1.0.x"
   },
   "bin": {
-    "local-tld": "./lib/local-tld.js"
+    "local-tld": "./bin/local-tld.js"
   },
   "devDependencies": {},
   "repository": "https://github.com:hoodiehq/local-tld",
