@@ -19,7 +19,6 @@
     "tld",
     "pow"
   ],
-  "os": ["darwin","win32"],
   "author": "Jan Lehnardt <jan@apache.org>",
   "license": "Apache 2.0",
   "readmeFilename": "README.md"
