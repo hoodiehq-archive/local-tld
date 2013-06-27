@@ -2,7 +2,7 @@
 
 Local TLD maintains a local development top level domain that you can hook various projects into.
 
-If you know `pow`, this `pow` without the Rack part.
+If you know `pow`, this is `pow` without the Rack part.
 
 Mac OS X only, for the time being. Cross platform support desired, if you can contribute it! :)
 
