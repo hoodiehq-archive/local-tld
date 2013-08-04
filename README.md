@@ -45,6 +45,19 @@ See https://github.com/hoodiehq/local-tld-lib
 
 This uses a cool dynamic DNS system that is built into Mac OS X. Local TLD runs a minimal DNS lookup server that does the address translation magic.
 
+## I want subdomains!
+Easy. Just make your configuration look like this:
+
+```json
+{
+  "8000": {
+    "name": "myfancyprojectA",
+    "aliases": ["subdomain1", "subdomain2"]
+  }
+}
+```
+
+Now, you should be able to reach `localhost:8000` from `http://myfancyprojectA.dev`, `http://subdomain1.myfancyprojectA.dev`, and `http://subdomain2.myfancyprojectA.dev`!
 
 ## No Original Work
 
