@@ -1,21 +1,12 @@
 #!/usr/bin/env node
-var fs = require("fs");
-var os = require("os");
-var watch = require("watchfd").watch;
 var http_proxy = require("http-proxy");
 var dnsserver = require("dnsserver");
 
+var config_file = require("../lib/config_file");
 
 // start dns
 // start httpd router
 // restart httpd when config changes.
-
-var config_file = process.env.HOME + "/.local-tld.json";
-try {
-  var config = JSON.parse(fs.readFileSync(config_file));
-} catch(e) {
-  config = {};
-}
 
 var DNS_PORT = 3333;
 var HTTP_PORT = 5999;
@@ -23,17 +14,7 @@ var HTTP_PORT = 5999;
 start_dns();
 var httpd = start_httpd();
 
-watch(config_file, function(current, previous) {
-  if(current.length == 0) {
-    return;
-  }
-  try {
-    config = JSON.parse(fs.readFileSync(config_file));
-  } catch (e) {
-    console.log("Parsing of config file %s failed:", config_file);
-    console.log(e);
-  }
-
+config_file.on('changed', function() {
   console.log("reloading proxy");
   httpd.close();
   console.log("closed");
@@ -41,64 +22,9 @@ watch(config_file, function(current, previous) {
   console.log("done");
 });
 
-
-// util
-
-function get_local_ips()
-{
-  var ifconfig = os.networkInterfaces();
-  var local_ips = [];
-  var if_name;
-
-  for(if_name in ifconfig) {
-    if(if_name.substr(0, 2) != "en") {
-      continue; // for other unixes learn other interface names
-    }
-    var _if = ifconfig[if_name];
-    _if.forEach(function(address_info) {
-      if(address_info.internal) {
-        return; // no loopback!
-      }
-
-      if(address_info.family == 'IPv6') {
-        return; // no
-      }
-
-      local_ips.push(address_info.address);
-
-    });
-  }
-  return local_ips;
-}
-
 function start_httpd()
 {
-  function make_routes()
-  {
-    var routes = {};
-    var local_ips = get_local_ips();
-    // routes["localhost"] = "127.0.0.1:80";
-    for(var port_m in config) {
-      var domain = config[port_m].name;
-      routes["localhost"] = "127.0.0.1:80";
-      routes[domain + ".dev"] = "127.0.0.1:" + port_m;
-      local_ips.forEach(function(local_ip) {
-        routes[domain + "." + local_ip + ".xip.io"] = "127.0.0.1:" + port_m;
-      });
-      if(config[port_m].aliases) {
-        var aliases = config[port_m].aliases;
-        for(var alias in aliases) {
-          routes[".*" + aliases[alias] + "." + domain + ".dev"] = "127.0.0.1:" + port_m;
-          local_ips.forEach(function(local_ip) {
-              routes[".*" + aliases[alias] + "." + domain + "." + local_ip + ".xip.io"] = "127.0.0.1:" + port_m;
-          });
-        }
-      }
-    }
-    console.log(routes);
-    return routes;
-  }
-  var routes = make_routes();
+  var routes = config_file.routes();
   var server = http_proxy.createServer({
     router: routes
   });
@@ -128,7 +54,7 @@ function start_dns()
   });
 
   server.on("message", function(m) {
-    // log(m);
+    console.log(m.toString('utf8'));
   });
 
   server.on("error", function(e) {
