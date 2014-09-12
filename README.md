@@ -9,7 +9,7 @@ Mac OS X only, for the time being. Cross platform support desired, if you can co
 
 ## Er what?
 
-Here’s an example. What if you maintained two web projects A and B and have a local setup of both, and you’d like to work on the both at the same time, or switch easily, and you don’t want to mess with things like `http://localhost:8888` because that is just annoying and ugly.
+Here’s an example. What if you maintained two web projects A and B and have a local setup of both, and you’d like to work on them both at the same time, or switch easily, and you don’t want to mess with things like `http://localhost:8888` because that is just annoying and ugly.
 
 What if you could have these two nice addresses:
 
@@ -33,7 +33,7 @@ Yes, you can do that by messing with `/etc/hosts`, but it ain’t pretty, and yo
       }
     }
 
-Dat it. `/.local-tld.json` maps the a subdomain to a TCP port. So if you have a httpd running on `localhost:8000` you can now reach it by going to `http://myfancyprojectA.dev`.
+Dat it. `~/.local-tld.json` maps the a subdomain to a TCP port. So if you have an httpd running on `localhost:8000` you can now reach it by going to `http://myfancyprojectA.dev`.
 
 
 ## I want my app to register itself with local-tld!
