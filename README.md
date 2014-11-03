@@ -59,6 +59,21 @@ Easy. Just make your configuration look like this:
 
 Now, you should be able to reach `localhost:8000` from `http://myfancyprojectA.dev`, `http://subdomain1.myfancyprojectA.dev`, and `http://subdomain2.myfancyprojectA.dev`!
 
+
+## Sweet. Does it work with boot2docker ports?
+
+Yep! In addition to the port, you'll need to specify your `boot2docker ip` address (usually `192.168.59.103`) for the domains you want to map:
+
+```json
+{
+  "192.168.59.103:8002": {
+    "name": "myfancyprojectC"
+  }
+}
+```
+
+(Astute readers will note that this actually means it works with *any server* on *any IP address*, not just boot2docker)
+
 ## No Original Work
 
 This is all ripped out of `pow`, we don’t claim any credit.
