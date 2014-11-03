@@ -25,7 +25,12 @@ fi
 $SUDO mkdir -p /etc/resolver
 $SUDO cp $ETC/resolver.dev /etc/resolver/dev
 
-$SUDO cp $ETC/ie.hood.local-tld-firewall.plist /Library/LaunchDaemons/
+if [ `which pfctl` ]; then
+  $SUDO cp $ETC/ie.hood.local-tld-firewall.plist /Library/LaunchDaemons/
+else
+  # Fallback support for Mountain Lion and before
+  $SUDO cp $ETC/legacy/ie.hood.local-tld-firewall.plist /Library/LaunchDaemons/
+fi
 
 cp $ETC/ie.hood.local-tld-service.plist $HOME/Library/LaunchAgents/
 
