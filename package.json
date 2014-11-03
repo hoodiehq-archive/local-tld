@@ -19,6 +19,7 @@
     "pow"
   ],
   "os": ["darwin"],
+  "preferGlobal": true,
   "author": "Jan Lehnardt <jan@apache.org>",
   "license": "Apache 2.0",
   "readmeFilename": "README.md"
