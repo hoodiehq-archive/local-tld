@@ -1,4 +1,7 @@
-# Local TLD [![Build Status](https://secure.travis-ci.org/hoodiehq/local-tld.png?branch=master)](http://travis-ci.org/hoodiehq/local-tld)
+# Local TLD 
+[![Build Status](https://travis-ci.org/hoodiehq/local-tld.svg)](https://travis-ci.org/hoodiehq/local-tld)
+[![Dependency Status](https://david-dm.org/hoodiehq/local-tld.svg)](https://david-dm.org/hoodiehq/local-tld)
+[![devDependency Status](https://david-dm.org/hoodiehq/local-tld/dev-status.svg)](https://david-dm.org/hoodiehq/local-tld#info=devDependencies)
 
 Local TLD maintains a local development top level domain that you can hook various projects into.
 
