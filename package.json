@@ -2,18 +2,24 @@
   "name": "local-tld",
   "version": "4.0.0",
   "description": "Maintain a TLD on localhost for all your projects.",
-  "main":"bin/local-tld-service",
+  "main": "bin/local-tld-service",
   "dependencies": {
     "dnsserver": "https://github.com/sstephenson/dnsserver.js/archive/library.tar.gz",
     "watchfd": "~0.0.9",
     "http-proxy": "~0.8.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-semantic-release": "~0.2.1"
+  },
   "scripts": {
     "postinstall": "./bin/local-tld-setup",
-    "preuninstall": "./bin/local-tld-uninstall"
+    "preuninstall": "./bin/local-tld-uninstall",
+    "test": "grunt test --verbose"
   },
   "repository": "https://github.com:hoodiehq/local-tld",
+  "homepage": "https://github.com/hoodiehq/local-tld",
   "keywords": [
     "tld",
     "pow"

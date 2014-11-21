@@ -1,4 +1,4 @@
-# Local TLD
+# Local TLD [![Build Status](https://secure.travis-ci.org/hoodiehq/local-tld.png?branch=master)](http://travis-ci.org/hoodiehq/local-tld)
 
 Local TLD maintains a local development top level domain that you can hook various projects into.
 
