@@ -15,3 +15,7 @@ $SUDO rm -f /Library/LaunchDaemons/ie.hood.local-tld-firewall.plist
 rm -f $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
 
 $SUDO rm -f /etc/resolver/dev
+
+# Flush rules, or else it will hold all .dev domains for ransom,
+# leaving you with connection refused and a sad frown
+$SUDO pfctl -F all
