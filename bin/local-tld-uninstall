@@ -17,4 +17,4 @@ rm -f $HOME/Library/LaunchAgents/ie.hood.local-tld-service.plist
 $SUDO rm -f /etc/resolver/dev
 
 # Flush nat rules
-$SUDO pfctl -a com.apple/250.PowFirewall -F nat 2>/dev/null || true
+$SUDO pfctl -a com.apple/250.LocalTldFirewall -F nat 2>/dev/null || true
