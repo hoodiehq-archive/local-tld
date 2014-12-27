@@ -1,4 +1,7 @@
-# Local TLD
+# Local TLD 
+[![Build Status](https://travis-ci.org/hoodiehq/local-tld.svg)](https://travis-ci.org/hoodiehq/local-tld)
+[![Dependency Status](https://david-dm.org/hoodiehq/local-tld.svg)](https://david-dm.org/hoodiehq/local-tld)
+[![devDependency Status](https://david-dm.org/hoodiehq/local-tld/dev-status.svg)](https://david-dm.org/hoodiehq/local-tld#info=devDependencies)
 
 Local TLD maintains a local development top level domain that you can hook various projects into.
 
@@ -58,6 +61,21 @@ Easy. Just make your configuration look like this:
 ```
 
 Now, you should be able to reach `localhost:8000` from `http://myfancyprojectA.dev`, `http://subdomain1.myfancyprojectA.dev`, and `http://subdomain2.myfancyprojectA.dev`!
+
+
+## Sweet. Does it work with boot2docker ports?
+
+Yep! In addition to the port, you'll need to specify your `boot2docker ip` address (usually `192.168.59.103`) for the domains you want to map:
+
+```json
+{
+  "192.168.59.103:8002": {
+    "name": "myfancyprojectC"
+  }
+}
+```
+
+(Astute readers will note that this actually means it works with *any server* on *any IP address*, not just boot2docker)
 
 ## No Original Work
 
