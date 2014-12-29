@@ -4,6 +4,7 @@ node_js:
 os:
 - osx
 before_install:
+- brew install nvm
 - npm install -g grunt-cli
 before_deploy:
 - grunt before-deploy
