@@ -8,7 +8,7 @@
   <array>
     <string>sh</string>
     <string>-c</string>
-    <string>echo "rdr pass on lo0 inet proto tcp from any to any port 80 -> 127.0.0.1 port 5999" | pfctl -a "com.apple/250.LocalTldFirewall" -f - -E</string>
+    <string>ipfw add fwd 127.0.0.1,5999 tcp from any to me dst-port 80 in &amp;&amp; sysctl -w net.inet.ip.forwarding=1</string>
   </array>
   <key>RunAtLoad</key>
   <true/>

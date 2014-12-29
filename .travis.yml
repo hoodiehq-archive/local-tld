@@ -1,8 +1,18 @@
-language: node_js
-node_js:
-- '0.10'
+## Multi-OS (i.e. Mac) builds don't support node yet. We'll try to hack it by
+## using ruby and installing node ourselves. Wheee!
+# language: node_js
+# node_js:
+# - '0.10'
+language: ruby
+os:
+- osx
 before_install:
+- brew install node
 - npm install -g grunt-cli
+install:
+- npm install
+script:
+- npm test
 before_deploy:
 - grunt before-deploy
 after_deploy:
