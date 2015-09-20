@@ -24,7 +24,9 @@
     "tld",
     "pow"
   ],
-  "os": ["darwin"],
+  "os": [
+    "darwin"
+  ],
   "preferGlobal": true,
   "author": "Jan Lehnardt <jan@apache.org>",
   "license": "Apache 2.0",
