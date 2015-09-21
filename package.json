@@ -6,7 +6,7 @@
   "dependencies": {
     "dnsserver": "https://github.com/sstephenson/dnsserver.js/archive/library.tar.gz",
     "watchfd": "~0.0.9",
-    "http-proxy": "~0.8.7"
+    "http-proxy": "1.11.2"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
@@ -24,7 +24,9 @@
     "tld",
     "pow"
   ],
-  "os": ["darwin"],
+  "os": [
+    "darwin"
+  ],
   "preferGlobal": true,
   "author": "Jan Lehnardt <jan@apache.org>",
   "license": "Apache 2.0",
